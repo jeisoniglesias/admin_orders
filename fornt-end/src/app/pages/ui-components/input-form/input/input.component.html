@@ -1,0 +1,21 @@
+<mat-form-field appearance="outline" [class]="class" [color]="color">
+  <input
+    matInput
+    [type]="type"
+    [id]="id"
+    [name]="name"
+    [placeholder]="placeholder"
+    [formControl]="control"
+  />
+  <!--   <span *ngIf="control.invalid && control.touched">{{ error }}</span>
+ -->
+</mat-form-field>
+
+<div *ngIf="control.invalid && control.touched" class="pb-3">
+  <com-error-input
+    [data]="control.errors"
+    [label]="label"
+    [formContained]="control"
+    [controlName]="name"
+  ></com-error-input>
+</div>
