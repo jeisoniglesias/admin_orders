@@ -14,10 +14,13 @@ import * as TablerIcons from 'angular-tabler-icons/icons';
 
 import { AuthenticationRoutes } from './authentication.routing';
 
-import { AppSideLoginComponent } from './login/login.component';
-import { AppSideRegisterComponent } from './register/register.component';
+import { AppSideLoginComponent } from './containers/login/login.component';
+import { AppSideRegisterComponent } from './containers/register/register.component';
+import { InputFormModule } from '../ui-components/input-form/input-form.module';
+import { InputComponent } from '../ui-components/input-form/input/input.component';
 
 @NgModule({
+  declarations: [AppSideLoginComponent, AppSideRegisterComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(AuthenticationRoutes),
@@ -29,10 +32,8 @@ import { AppSideRegisterComponent } from './register/register.component';
     FormsModule,
     ReactiveFormsModule,
     TablerIconsModule.pick(TablerIcons),
+    InputFormModule,
   ],
-  declarations: [
-    AppSideLoginComponent,
-    AppSideRegisterComponent,
-  ],
+  exports: [ReactiveFormsModule],
 })
 export class AuthenticationModule {}

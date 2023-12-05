@@ -11,7 +11,7 @@ import { TablerIconsModule } from 'angular-tabler-icons';
 import * as TablerIcons from 'angular-tabler-icons/icons';
 
 //Import all material modules
-import { MaterialModule } from './material.module';
+import { MaterialModule } from './pages/ui-components/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgScrollbarModule } from 'ngx-scrollbar';
 
@@ -24,6 +24,7 @@ import { SidebarComponent } from './layouts/full/sidebar/sidebar.component';
 import { HeaderComponent } from './layouts/full/header/header.component';
 import { BrandingComponent } from './layouts/full/sidebar/branding.component';
 import { AppNavItemComponent } from './layouts/full/sidebar/nav-item/nav-item.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { AppNavItemComponent } from './layouts/full/sidebar/nav-item/nav-item.co
     MaterialModule,
     TablerIconsModule.pick(TablerIcons),
     NgScrollbarModule,
+    NgbModule,
   ],
   exports: [TablerIconsModule],
   bootstrap: [AppComponent],
