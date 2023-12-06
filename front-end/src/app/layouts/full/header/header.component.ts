@@ -4,9 +4,11 @@ import {
   EventEmitter,
   Input,
   ViewEncapsulation,
+  inject,
+  computed,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-
+import { LoginService } from 'src/app/pages/authentication/services/api/login.service';
 
 @Component({
   selector: 'app-header',
@@ -23,4 +25,10 @@ export class HeaderComponent {
   showFiller = false;
 
   constructor(public dialog: MatDialog) {}
+  private authService = inject(LoginService);
+  public user = computed(() => this.authService.currentUser());
+
+  onLogout() {
+    this.authService.logout();
+  }
 }

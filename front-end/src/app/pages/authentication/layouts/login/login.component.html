@@ -22,7 +22,7 @@
             (ngSubmit)="onSubmit()"
           >
             <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block"
-              >Correo Electronico</mat-label
+              >Correo Electronico:</mat-label
             >
             <comp-input
               [control]="formUtilities.getControl(formLogin, 'email')"
@@ -34,7 +34,7 @@
             ></comp-input>
             <!-- password -->
             <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block"
-              >Contraseña</mat-label
+              >Contraseña:</mat-label
             >
 
             <comp-input
@@ -46,7 +46,7 @@
               label="Contraseña"
             ></comp-input>
             <div class="d-flex align-items-center m-b-12">
-              <mat-checkbox color="primary">Recuerdame</mat-checkbox>
+              <!--<mat-checkbox color="primary">Recuerdame</mat-checkbox> -->
               <a
                 [routerLink]="['/']"
                 class="text-primary f-w-600 text-decoration-none m-l-auto f-s-14"
@@ -58,7 +58,7 @@
               mat-flat-button
               color="primary"
               class="w-100"
-              [disabled]="formLogin.invalid || loadingSaving"
+              [disabled]="loadingSaving"
             >
               Iniciar Session
               <i-tabler name="rotate" *ngIf="loadingSaving"></i-tabler>

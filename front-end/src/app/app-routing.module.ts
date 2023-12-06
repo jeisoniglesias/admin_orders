@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BlankComponent } from './layouts/blank/blank.component';
 import { FullComponent } from './layouts/full/full.component';
+import { isNotAuthenticatedGuard } from './pages/authentication/guards/is-not-authenticated.guard';
+import { isAuthenticatedGuard } from './pages/authentication/guards/is-authenticated.guard';
 
 const routes: Routes = [
   /*   {
@@ -35,6 +37,7 @@ const routes: Routes = [
   {
     path: '',
     component: BlankComponent,
+    canActivate: [isNotAuthenticatedGuard],
     children: [
       {
         path: '',
@@ -46,13 +49,28 @@ const routes: Routes = [
     ],
   },
   {
+    path: '',
+    component: FullComponent,
+/*     canActivate: [isAuthenticatedGuard],
+ */
+    children: [
+      {
+        path: '',
+        loadChildren: () =>
+          import('./pages/dashboard/dashboard.module').then(
+            (m) => m.DashboardModule
+          ),
+      },
+    ],
+  },
+  {
     path: '**',
     redirectTo: '/',
   },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
