@@ -1,6 +1,6 @@
 {
-  "name": "testApp",
-  "short_name": "testApp",
+  "name": "admin_orders",
+  "short_name": "admin_orders",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",

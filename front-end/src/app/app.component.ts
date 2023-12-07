@@ -8,7 +8,7 @@ import { AuthStatus } from './pages/authentication/interfaces/auth-status.enum';
   templateUrl: './app.component.html',
 })
 export class AppComponent {
-  title = 'Spike Angular Admin Tempplate';
+  title = 'admin_orders Angular Admin Tempplate';
   private authService = inject(LoginService);
   private router = inject(Router);
 

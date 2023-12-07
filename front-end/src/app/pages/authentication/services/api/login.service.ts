@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, computed, inject, signal } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
-import { IUser } from '../../interfaces/user';
+import { IPermission, IRole, IUser } from '../../interfaces/user';
 import { AuthStatus } from '../../interfaces/auth-status.enum';
 import { Observable, catchError, map, of, switchMap, throwError } from 'rxjs';
 import { ILogin } from '../../interfaces/login.interface';
@@ -45,6 +45,8 @@ export class LoginService {
 
     const { token, user } = data as ILogin;
     this.setAuthentication(user, token);
+    this.setPermissions(user.roles, user.permissions);
+
     return {
       data: {
         id: user.id,
@@ -62,6 +64,32 @@ export class LoginService {
       },
     };
   }
+
+  private setData = (key: string, value: string[]): void => {
+    sessionStorage.setItem(key, JSON.stringify(value));
+  };
+
+  private getData = (key: string): any => {
+    return sessionStorage.getItem(key);
+  };
+
+  private setPermissions(roles: IRole[], permissions?: IPermission[]) {
+    const auxRoles = permissions?.map((permission) => permission.name) || [];
+
+    const permissionsRole = roles.map((rol) => {
+      if (rol.permissions && Array.isArray(rol.permissions)) {
+        return rol.permissions.map((permiso) => permiso.name);
+      } else {
+        return [];
+      }
+    });
+    const onlyNamePermissios = permissionsRole.flat();
+
+    const data = [...new Set([...onlyNamePermissios, ...auxRoles])];
+
+    this.setData('permissions', data);
+  }
+
   login(
     email: string,
     password: string
@@ -107,5 +135,12 @@ export class LoginService {
     localStorage.removeItem('token');
     this._currentUser.set(null);
     this._authStatus.set(AuthStatus.notAuthenticated);
+  }
+
+  getPermisions(): string[] {
+    const permisos = this.getData('permissions');
+    console.log(permisos);
+    
+    return JSON.parse(permisos) as string[];
   }
 }

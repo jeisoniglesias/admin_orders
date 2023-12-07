@@ -24,7 +24,7 @@
               "sweetalert2"
 
             ],
-            "outputPath": "dist/Spike",
+            "outputPath": "dist/admin_orders",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": ["zone.js"],

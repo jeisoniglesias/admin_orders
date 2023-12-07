@@ -7,7 +7,7 @@ export interface IUser {
   isBlocked: boolean;
   timeBlocked: null;
   roles: IRole[];
-  permissions: any[];
+  permissions: IPermission[];
 }
 export interface IRole {
   id: number;
@@ -15,6 +15,15 @@ export interface IRole {
   updatedAt: Date;
   deletedAt: null;
   name: string;
-  description: string;
-  permissions: any[];
+  description: null | string;
+  permissions?: null | IPermission[];
+}
+export interface IPermission {
+  id: number;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt: null;
+  name: string;
+  description: null | string;
+  module: null;
 }
