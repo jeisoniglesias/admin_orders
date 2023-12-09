@@ -1,11 +1,11 @@
 {
-  "name": "Spike",
+  "name": "admin_orders",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "buildH": "ng build && http-server -p 8080 -c-1 dist/spike",
+    "buildH": "ng build && http-server -p 8080 -c-1 dist/admin_orders",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -28,6 +28,7 @@
     "apexcharts": "^3.40.0",
     "bootstrap": "^5.2.3",
     "ng-apexcharts": "1.7.6",
+    "ngx-permissions": "^16.0.1",
     "ngx-scrollbar": "^11.0.0",
     "rxjs": "~7.8.0",
     "sweetalert2": "^11.10.1",

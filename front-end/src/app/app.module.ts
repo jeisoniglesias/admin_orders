@@ -26,6 +26,7 @@ import { BrandingComponent } from './layouts/full/sidebar/branding.component';
 import { AppNavItemComponent } from './layouts/full/sidebar/nav-item/nav-item.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { NgxPermissionsModule } from 'ngx-permissions';
 
 @NgModule({
   declarations: [
@@ -48,14 +49,16 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     TablerIconsModule.pick(TablerIcons),
     NgScrollbarModule,
     NgbModule,
+    NgxPermissionsModule.forRoot(),
+
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
       // Register the ServiceWorker as soon as the application is stable
       // or after 30 seconds (whichever comes first).
-      registrationStrategy: 'registerWhenStable:30000'
+      registrationStrategy: 'registerWhenStable:30000',
     }),
   ],
-  exports: [TablerIconsModule],
+  exports: [TablerIconsModule, ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

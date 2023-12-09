@@ -33,8 +33,12 @@
 
 .branding {
   padding: 20px;
+  text-align: center;
 }
 
+.branding > * > img {
+  width: 80%;
+}
 .sidebar-list {
   &.mdc-list {
     margin-top: -24px;
@@ -101,7 +105,7 @@
         }
         background-color: transparent !important;
       }
-      
+
       &:hover {
         &:before {
           content: "";

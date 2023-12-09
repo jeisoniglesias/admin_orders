@@ -51,8 +51,7 @@ const routes: Routes = [
   {
     path: '',
     component: FullComponent,
-/*     canActivate: [isAuthenticatedGuard],
- */
+    canActivate: [isAuthenticatedGuard],
     children: [
       {
         path: '',
